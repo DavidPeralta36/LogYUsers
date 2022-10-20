@@ -1,22 +1,161 @@
-import React from 'react'
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView  } from 'react-native';
+import React, { useRef } from 'react'
+import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView, Animated  } from 'react-native';
 import CardT from './CardT';
 
 const Home = ({navigation}) => {
+  const fadeAnimm = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim2 = useRef(new Animated.Value(0)).current;
+  const fadeAnim3 = useRef(new Animated.Value(0)).current;
+  const fadeAnim4 = useRef(new Animated.Value(0)).current;
+
+  Animated.timing(fadeAnimm, {
+    toValue: 1,
+    duration: 1000,
+    useNativeDriver:true
+  }).start();
+
+  Animated.timing(fadeAnim, {
+    toValue: 1,
+    duration: 2000,
+    useNativeDriver:true
+  }).start();
+
+  Animated.timing(fadeAnim2, {
+    toValue: 1,
+    duration: 3000,
+    useNativeDriver:true
+  }).start();
+  Animated.timing(fadeAnim3, {
+    toValue: 1,
+    duration: 4000,
+    useNativeDriver:true
+  }).start();
+
+  Animated.timing(fadeAnim4, {
+    toValue: 1,
+    duration: 5000,
+    useNativeDriver:true
+  }).start();
+
+
   return (
     <ScrollView backgroundColor="#34054F">
         <View style={styles.container}>
+            <Animated.View style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnimm
+                    }
+                    ]}>
             <Text style={styles.menu2}>Elige una actividad</Text>
-
-            <CardT navigation={navigation} 
-            description={"Aplicacion para generar una lista de usuarios random por medio de un slideBar"}
-            btnText = {"Usuarios random"}
+            </Animated.View>       
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+                description={"Aplicacion para generar una lista de usuarios random por medio de un slideBar"}
+                btnText = {"Usuarios random"}
+                screen={"Users"}
+                />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim4
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"Una caja que se hace grndota y se hace chiquita"}
+            btnText = {"Ir a la cajota"}
+            screen={"Box"}
             />
-
-            <CardT navigation={navigation} 
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim2
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
             description={"Aplicacion para Compartir una foro en tus redes sociales"}
             btnText = {"Compartir Imagen"}
+            screen={"Share"}
             />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim4
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"App para ver las distintas animaciones dew react native"}
+            btnText = {"Ver"}
+            screen={"Ease"}
+            />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim3
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"Aplicacion para jugar con una cajita"}
+            btnText = {"Jugar con la caja"}
+            screen={"DragBox"}
+            />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim4
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"Carrusel de imagenes"}
+            btnText = {"Bonito carrusel"}
+            screen={"Carrusel"}
+            />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim4
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"App para observar la animacion del layaout"}
+            btnText = {"Ver"}
+            screen={"Expand"}
+            />
+            </Animated.View>
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim4
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
+            description={"App para observar la animacion del layaout 2"}
+            btnText = {"Ver"}
+            screen={"Moove"}
+            />
+            </Animated.View>
+            
+            
         </View>   
     </ScrollView>
   )
@@ -27,7 +166,9 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth:3,
+      },
+      fadingContainer:{
+        padding: 1,
       },
     menu:{
         padding:10,

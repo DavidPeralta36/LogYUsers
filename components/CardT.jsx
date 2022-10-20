@@ -1,15 +1,15 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView  } from 'react-native';
 
-const CardT = ({navigation, description, btnText}) => {
+const CardT = ({navigation, description, btnText, screen}) => {
   return (
     <View style={styles.item}>
               <Text style={styles.menu}>{description}</Text>
               <TouchableOpacity style={styles.loginBtn}
                 onPress={() => {
-                    navigation.navigate('Users')
+                    navigation.navigate(screen)
                 }}>
-                <Text>{btnText}</Text>
+                <Text style={styles.text}>{btnText}</Text>
               </TouchableOpacity>
             </View>
   )
@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#2AB57C",
         marginBottom:40
       },
+      text:{
+        color:"white"
+      }
     });
     
 export default CardT

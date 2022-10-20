@@ -5,6 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/usr.png",
+    "plugins": ["expo-image-picker"],
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/usr.png",

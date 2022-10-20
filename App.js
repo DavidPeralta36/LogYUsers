@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert  } from 'react-native';
+import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,Animated  } from 'react-native';
 import Cuerpo from './components/Cuerpo';
 
 export default function App() {
+    const fadeAnim = useRef(new Animated.Value(0)).current;
+    const fadeAnim2 = useRef(new Animated.Value(0)).current;
+    const [iniciando, setIniciando] = useState(false);
     const [email, setEmail] = useState("");
-    const [logear, setLogear] = React.useState(null);
+    const [logear, setLogear] = React.useState(false);
     const [password, setPassword] = useState("");
     const correo = "Admin";
     const contraseña = "1234";
 
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 2000,
+      useNativeDriver:true
+    }).start();
+    Animated.timing(fadeAnim2, {
+      toValue: 1,
+      duration: 4000,
+      useNativeDriver:true
+    }).start();
 
     const emailSend = () => {
-      setLogear(true)
         if(email.length === 0 || password.length === 0){
           alert("Agregue las credenciales validas")
         }else{
@@ -25,7 +37,6 @@ export default function App() {
             setLogear(true)
           }
         }
-        
         console.log(email)
         setEmail("")
         console.log(password)
@@ -33,16 +44,50 @@ export default function App() {
         
     }
 
-    const alertaPW = () =>
+    const fadeOut = () => {
+      // Will change fadeAnim value to 0 in 3 seconds
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 3000,
+        useNativeDriver:true
+      }).start();
+
+      Animated.timing(fadeAnim2, {
+        toValue: 0,
+        duration: 2000,
+        useNativeDriver:true
+      }).start();
+      setTimeout(emailSend,2900)
+      
+    };
+
+    const fadeOutError = () => {
+      // Will change fadeAnim value to 0 in 3 seconds
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver:true
+      }).start();
+      Animated.timing(fadeAnim2, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver:true
+      }).start();
+    };
+
+    const alertaPW = () =>{
+      fadeOutError();
     Alert.alert(
       "Ups..",
       "Correo o contraseñas incorrectas",
       [
         { text: "Entendido"}
       ]
-    );
+    )
+    
+  }
       
-      if(logear !== null){
+      if(logear !== false){
         console.log(logear)
         return(
             <Cuerpo/>
@@ -51,9 +96,20 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Inicio de sesion</Text>
-      <Image style={styles.image} source={require("./assets/navegador.png")} />
- 
+      <Animated.Text style={[styles.title,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim
+                    }
+                    ]}>{iniciando? "Iniciando sesion... Espere" : "Inicio de sesion"}</Animated.Text>
+      
+      <Animated.View style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim2
+                    }
+                    ]}>
+        <Image style={styles.image} source={require("./assets/navegador.png")} />
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
@@ -81,10 +137,12 @@ export default function App() {
       </TouchableOpacity>
  
       <TouchableOpacity style={styles.loginBtn} onPress={() => {
-          emailSend();
+          fadeOut();
         }}>
-        <Text style={styles.loginText}>Iniciar sesion :)</Text>
+        <Text style={styles.loginText}>Iniciar sesion:)</Text>
       </TouchableOpacity>
+      </Animated.View>
+      
     </View>
   );
 }
@@ -96,10 +154,16 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       },
+      fadingContainer:{
+        padding: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      },
   title:{
-      fontSize:30,
+      fontSize:25,
       color:"#fff",
-      fontWeight:"bold"
+      fontWeight:"bold",
+
       },
   image: {
     marginBottom: 40,
