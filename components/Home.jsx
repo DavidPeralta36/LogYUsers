@@ -38,7 +38,6 @@ const Home = ({navigation}) => {
     useNativeDriver:true
   }).start();
 
-
   return (
     <ScrollView backgroundColor="#34054F">
         <View style={styles.container}>
