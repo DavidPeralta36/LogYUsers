@@ -5,7 +5,9 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/usr.png",
-    "plugins": ["expo-image-picker"],
+    "plugins": [
+      "expo-image-picker"
+    ],
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/usr.png",
@@ -25,7 +27,11 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/usr.png",
         "backgroundColor": "#34054F"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.davit036.LogYUsers"
     },
     "web": {
       "favicon": "./assets/favicon.png"

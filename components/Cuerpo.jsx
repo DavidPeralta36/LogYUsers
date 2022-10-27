@@ -13,6 +13,7 @@ import ExpandLayout from './Animaciones/ExpandLayaout';
 import MooveAnimation from './Animaciones/MooveAnimation';
 
 
+
 const Stack = createNativeStackNavigator();
 
 const Cuerpo = () => {
@@ -136,8 +137,7 @@ const Cuerpo = () => {
                                             backgroundColor: '#710687',},
                                             headerTintColor: '#fff',
                                             headerTitleStyle: {
-                                                fontWeight: 'bold',},} } />                                    
-                                                
+                                                fontWeight: 'bold',},} } />                                            
                 </Stack.Navigator>
             </NavigationContainer>
         );

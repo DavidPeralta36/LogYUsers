@@ -24,6 +24,16 @@ export default class BigBox extends React.Component {
     LayoutAnimation.spring();
     this.setState({w: this.state.w + 15, h: this.state.h + 15})
   }
+  _onPressA = () => {
+    // Animate the update
+    LayoutAnimation.spring();
+    this.setState({h: this.state.h + 15})
+  }
+  _onPressW = () => {
+    // Animate the update
+    LayoutAnimation.spring();
+    this.setState({w: this.state.w + 15})
+  }
   _onPress2 = () => {
     // Animate the update
     LayoutAnimation.spring();
@@ -44,6 +54,16 @@ export default class BigBox extends React.Component {
         <TouchableOpacity onPress={this._onPress}>
           <View style={styles.button}>
             <Text style={styles.buttonText}>Mas grande!</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this._onPressA}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Mas alta!</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this._onPressW}>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>Mas larga!</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={this._onPress2}>

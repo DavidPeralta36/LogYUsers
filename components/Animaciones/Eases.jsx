@@ -1,5 +1,5 @@
 import React from "react";
-import { Animated, Easing, SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Animated, Easing, SectionList, StatusBar, StyleSheet, Text, TouchableOpacity, View,ScrollView } from "react-native";
 
 const Eases = () => {
   let opacity = new Animated.Value(0);
@@ -28,7 +28,8 @@ const Eases = () => {
   ];
 
   return (
-    <View style={styles.container}>
+    
+     <View style={styles.container}>
       <StatusBar hidden={true} />
       <Text style={styles.title}>
         Selecciona la animacion que quieres ver
@@ -36,6 +37,7 @@ const Eases = () => {
       <View style={styles.boxContainer}>
         <Animated.View style={animatedStyles} />
       </View>
+      
       <SectionList
         style={styles.list}
         sections={SECTIONS}
@@ -52,7 +54,7 @@ const Eases = () => {
           <Text style={styles.listHeader}>{title}</Text>
         )}
       />
-    </View>
+    </View> 
   );
 };
 

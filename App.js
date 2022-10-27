@@ -96,7 +96,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Animated.Text style={[styles.title,
+      <Animated.Text style={[styles.title, //Si quieres agregar un segundo estilo hazlo en arreglo {[ i, i]}
                     {
                       // Bind opacity to animated value
                       opacity: fadeAnim
@@ -109,8 +109,10 @@ export default function App() {
                       opacity: fadeAnim2
                     }
                     ]}>
+
         <Image style={styles.image} source={require("./assets/navegador.png")} />
       <StatusBar style="auto" />
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -123,12 +125,13 @@ export default function App() {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Contraseña"
           placeholderTextColor="white"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
       </View>
+
       <TouchableOpacity>
         <Text style={styles.forgot_button}
         onPress={() => {
@@ -141,6 +144,7 @@ export default function App() {
         }}>
         <Text style={styles.loginText}>Iniciar sesion:)</Text>
       </TouchableOpacity>
+
       </Animated.View>
       
     </View>

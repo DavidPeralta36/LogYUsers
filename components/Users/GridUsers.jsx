@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert  } from 'react-native';
+import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert, LayoutAnimation  } from 'react-native';
 import ListUsers from './ListUsers';
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ const GridUsers = ({limiteUsuarios, dark}) => {
 
     const [dtusr, setdtusr]= useState([])
     const [hidden, setHidden] = useState(false)
-
+    const [expanded, setExpanded] = useState(false);
 
     const getUsr = async ()=>
     {
@@ -41,7 +41,9 @@ const GridUsers = ({limiteUsuarios, dark}) => {
           ]
         );
       }
-      setHidden(true)
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
+      setExpanded(!expanded);
+      //setHidden(true)
     }
     const actualizar = () => {
       try{
@@ -67,6 +69,7 @@ const GridUsers = ({limiteUsuarios, dark}) => {
     <View style={dark? styles.container : styles.containerDia}>
         {
           (dark)?
+          !expanded && (
           <>
             <TouchableOpacity 
             //style={styles.loginBtn} 
@@ -81,8 +84,9 @@ const GridUsers = ({limiteUsuarios, dark}) => {
             }}>
               <Text style={!hidden? styles.loginText : styles.loginTextDes}>Consultar</Text>
             </TouchableOpacity>
-          </>
+          </>)
           :
+          !expanded && (
           <>
             <TouchableOpacity 
             //style={styles.loginBtn} 
@@ -97,7 +101,7 @@ const GridUsers = ({limiteUsuarios, dark}) => {
             }}>
               <Text style={!hidden? styles.loginText : styles.loginTextDesDia}>Consultar</Text>
             </TouchableOpacity>
-          </>
+          </>)
         }
         {
           (dark)?

@@ -1,19 +1,26 @@
-import React from 'react'
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView, Pressable   } from 'react-native';
-import { Card } from "@rneui/themed";
+import { useRef,useEffect } from 'react';
+import { Image, StyleSheet, Text, View, Pressable, Animated   } from 'react-native';
+
 
 
 const Cardd = ({usuario, cambiarAct, getUsr, dark}) => {
+  const progress = useRef(new Animated.Value(0)).current;
+  const scale = useRef(new Animated.Value(1)).current;
 
-  const {id, first, last, photo, active, gender } = usuario
+  useEffect(() => {
+    Animated.spring(progress,{toValue:1, useNativeDriver: true, duration: 1000,}).start();
+    Animated.spring(scale,{toValue:1, useNativeDriver: true, duration: 1000,}).start();
+  }, [])
+
+  const {id, first, last, active, gender } = usuario
 
   const cambiaractivo = (id) => {
-    cambiarAct(id   )
+    cambiarAct(id)
     console.log("Activo cambiado en onlonppress")
 }
   return (
     
-    <View style={dark? styles.container : styles.containerDia}>
+    <Animated.View style={dark? [styles.container, {opacity: progress, transform:[{scale}]}] : [styles.containerDia, {opacity: progress, transform:[{scale}]}]}>
         <Pressable onLongPress={() => {
           cambiaractivo(id);
           }}>
@@ -38,9 +45,10 @@ const Cardd = ({usuario, cambiarAct, getUsr, dark}) => {
         } 
       </View>
         
-    </View>
+    </Animated.View>
   )
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

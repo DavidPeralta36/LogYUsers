@@ -9,6 +9,7 @@ const Home = ({navigation}) => {
   const fadeAnim3 = useRef(new Animated.Value(0)).current;
   const fadeAnim4 = useRef(new Animated.Value(0)).current;
 
+  //lo mejor seria agregar todas las animaciones en un arreglo pero que paja
   Animated.timing(fadeAnimm, {
     toValue: 1,
     duration: 1000,
@@ -48,7 +49,8 @@ const Home = ({navigation}) => {
                     }
                     ]}>
             <Text style={styles.menu2}>Elige una actividad</Text>
-            </Animated.View>       
+            </Animated.View>   
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -62,19 +64,7 @@ const Home = ({navigation}) => {
                 screen={"Users"}
                 />
             </Animated.View>
-            <Animated.View
-            style={[styles.fadingContainer,
-                    {
-                      // Bind opacity to animated value
-                      opacity: fadeAnim4
-                    }
-                    ]}>
-              <CardT navigation={navigation} 
-            description={"Una caja que se hace grndota y se hace chiquita"}
-            btnText = {"Ir a la cajota"}
-            screen={"Box"}
-            />
-            </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -83,11 +73,26 @@ const Home = ({navigation}) => {
                     }
                     ]}>
               <CardT navigation={navigation} 
+            description={"Una caja que se hace grndota y se hace chiquita"}
+            btnText = {"Ir a la cajota"}
+            screen={"Box"}
+            />
+            </Animated.View>
+
+            <Animated.View
+            style={[styles.fadingContainer,
+                    {
+                      // Bind opacity to animated value
+                      opacity: fadeAnim3
+                    }
+                    ]}>
+              <CardT navigation={navigation} 
             description={"Aplicacion para Compartir una foro en tus redes sociales"}
             btnText = {"Compartir Imagen"}
             screen={"Share"}
             />
             </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -101,11 +106,12 @@ const Home = ({navigation}) => {
             screen={"Ease"}
             />
             </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
                       // Bind opacity to animated value
-                      opacity: fadeAnim3
+                      opacity: fadeAnim4
                     }
                     ]}>
               <CardT navigation={navigation} 
@@ -114,6 +120,7 @@ const Home = ({navigation}) => {
             screen={"DragBox"}
             />
             </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -127,6 +134,7 @@ const Home = ({navigation}) => {
             screen={"Carrusel"}
             />
             </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -140,6 +148,7 @@ const Home = ({navigation}) => {
             screen={"Expand"}
             />
             </Animated.View>
+
             <Animated.View
             style={[styles.fadingContainer,
                     {
@@ -153,8 +162,6 @@ const Home = ({navigation}) => {
             screen={"Moove"}
             />
             </Animated.View>
-            
-            
         </View>   
     </ScrollView>
   )
