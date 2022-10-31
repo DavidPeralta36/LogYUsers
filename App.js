@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,Animated  } from 'react-native';
 import Cuerpo from './components/Cuerpo';
+import { Button } from '@rneui/base';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
 export default function App() {
@@ -236,14 +237,12 @@ if(logear !== false){
             alertaPW3()
           }}>Olvidaste tu contraseña? :(</Text>
         </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.loginBtn} onPress={() => {
+
+        <Button title='Iniciar sesion :)' loading={iniciando?true:false} onPress={() => {
             setIniciando(true)
             fadeOut();
-          }}>
-          <Text style={styles.loginText}>Iniciar sesion:)</Text>
-        </TouchableOpacity>
-
+          }} />
+          
       </Animated.View>
       
     </View>

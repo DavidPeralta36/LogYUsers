@@ -6,6 +6,7 @@ import GridUsers from './GridUsers';
 
 const SliderUsrs = () => {
 const [value, setValue] = useState(0);
+//estado de tema
 const [dark, setDark] = useState(true)
 
 const cambiarD = () => {

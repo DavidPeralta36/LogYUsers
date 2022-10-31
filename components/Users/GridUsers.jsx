@@ -9,7 +9,7 @@ const GridUsers = ({limiteUsuarios, dark}) => {
 
     const [dtusr, setdtusr]= useState([])
     const [hidden, setHidden] = useState(false)
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(true);
 
     const getUsr = async ()=>
     {
@@ -29,37 +29,17 @@ const GridUsers = ({limiteUsuarios, dark}) => {
     };
 
     const consultar = () => {
-      try{
-        getUsr()
-      }
-      catch (e){
-        Alert.alert(
-          "Ups..",
-          {e},
-          [
-            { text: "Entendido"}
-          ]
-        );
-      }
+      getUsr()
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
       setExpanded(!expanded);
       //setHidden(true)
     }
     const actualizar = () => {
-      try{
-        getUsr()
-      }
-      catch (e){
-        Alert.alert(
-          "Ups..",
-          {e},
-          [
-            { text: "Entendido"}
-          ]
-        );
-      }
+      getUsr()
     }
+
     const cambiarAct = (id)=>{
+      //Supender usuario
         const nuevousr = dtusr.filter(usuario => usuario.id === id)
         nuevousr[0].active = !nuevousr[0].active
         setdtusr([...dtusr])
@@ -69,24 +49,23 @@ const GridUsers = ({limiteUsuarios, dark}) => {
     <View style={dark? styles.container : styles.containerDia}>
         {
           (dark)?
-          !expanded && (
+          expanded && (
           <>
             <TouchableOpacity 
-            //style={styles.loginBtn} 
-            style={!hidden? styles.loginBtn : styles.loginBtnDes}
-            onPress={() => {
-              if(!hidden){
-                consultar();
-              }
-              else{
-                console.log("Boton desactivado")
-              }
-            }}>
+              style={!hidden? styles.loginBtn : styles.loginBtnDes}
+              onPress={() => {
+                if(!hidden){
+                  consultar();
+                }
+                else{
+                  console.log("Boton desactivado")
+                }
+              }}>
               <Text style={!hidden? styles.loginText : styles.loginTextDes}>Consultar</Text>
             </TouchableOpacity>
           </>)
           :
-          !expanded && (
+          expanded && (
           <>
             <TouchableOpacity 
             //style={styles.loginBtn} 

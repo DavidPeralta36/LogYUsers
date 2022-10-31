@@ -10,23 +10,29 @@ import * as ImageManipulator from "expo-image-manipulator";
 const PickScreen = () => {
   const [selectedImage, setSelectedImage] = React.useState(null);
 
-            
-  let openImagePickerAsync = async () => {    
+  //Abre el selector de imagenes          
+  let openImagePickerAsync = async () => {   
+    //espera al picker 
     let pickerResult = await ImagePicker.launchImageLibraryAsync();
     console.log(pickerResult);
+    //validacion de cancelacion
     if (pickerResult.cancelled === true) {
         console.log("Cancelado")
       return;
     }
+    //guarda la uri de la imagen
     setSelectedImage({ localUri: pickerResult.uri });
     console.log(selectedImage)
     }
 
+  //abre el modulo de compartir
   let openShareDialogAsync = async () => {
+    //espera al modulo
     const imageTmp = await ImageManipulator.manipulateAsync(selectedImage.localUri);
+    //ejecuta el parametro
     await Sharing.shareAsync(imageTmp.uri);
   };
-
+    //cuando la imagen seleccionada sea !null desplegara esta pantalla
     if(selectedImage !== null)
     {
         console.log("Aceptado")

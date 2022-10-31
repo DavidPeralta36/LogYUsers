@@ -50,9 +50,10 @@ const TodoInput = ({addTask}) => {
             onChangeText={handleChange} value={task}
           />
         </View> 
-
+                                                                {/*Validacion de la tarea*/}
         <TouchableOpacity style={styles.taskBtn} onPress={() => {(task.length === 0)?setOculto(!oculto):handleKey()}} >
-          <Icon
+                            {/*Validacion de la tarea*/}
+          <Icon             
             onPress={() => {(task.length === 0)?setOculto(!oculto):handleKey()}}
             name='check'
             type="font-awesome"
@@ -61,7 +62,7 @@ const TodoInput = ({addTask}) => {
             color= '#9F73AB'
             />
         </TouchableOpacity>
-
+        {/*Alerta de tarea vacia*/}
         <AwesomeAlert
           show={oculto?false : true}
           //contentContainerStyle={{backgroundColor:'white'}} se puede modificar desde la carpetaraiz
@@ -82,6 +83,7 @@ const TodoInput = ({addTask}) => {
             hideAlert();
           }}
         />
+        {/*Alerta de guardado*/}
         <AwesomeAlert
           show={oculto2?false : true}
           //contentContainerStyle={{backgroundColor:'white'}}
