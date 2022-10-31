@@ -1,17 +1,17 @@
 import React from 'react'
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView  } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 
 const CardT = ({navigation, description, btnText, screen}) => {
   return (
     <View style={styles.item}>
-              <Text style={styles.menu}>{description}</Text>
-              <TouchableOpacity style={styles.loginBtn}
-                onPress={() => {
-                    navigation.navigate(screen)
-                }}>
-                <Text style={styles.text}>{btnText}</Text>
-              </TouchableOpacity>
-            </View>
+      <Text style={styles.menu}>{description}</Text>
+      <TouchableOpacity style={styles.loginBtn}
+        onPress={() => {
+            navigation.navigate(screen)
+        }}>
+        <Text style={styles.text}>{btnText}</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
 const styles = StyleSheet.create({
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
         color:"#fff",
         fontWeight:"bold",
         borderBottomWidth:1,
-        borderColor:"white"
+        borderColor:"white",
+        
     },
     menu2:{
       fontSize:30,
@@ -42,7 +43,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop:15,
     borderWidth:2,
-    borderColor:"white"
+    borderColor:"white",
+    borderRadius:7
 },
     loginBtn: {
         width: 210,

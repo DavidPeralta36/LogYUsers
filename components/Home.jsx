@@ -3,12 +3,16 @@ import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollVi
 import CardT from './CardT';
 
 const Home = ({navigation}) => {
+  //#region declaracion de animaciones
   const fadeAnimm = useRef(new Animated.Value(0)).current;
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const fadeAnim2 = useRef(new Animated.Value(0)).current;
   const fadeAnim3 = useRef(new Animated.Value(0)).current;
   const fadeAnim4 = useRef(new Animated.Value(0)).current;
+  //#endregion
 
+
+  //#region Animaciones
   //lo mejor seria agregar todas las animaciones en un arreglo pero que paja
   Animated.timing(fadeAnimm, {
     toValue: 1,
@@ -39,61 +43,50 @@ const Home = ({navigation}) => {
     useNativeDriver:true
   }).start();
 
+  //#endregion
+
   return (
     <ScrollView backgroundColor="#34054F">
         <View style={styles.container}>
-            <Animated.View style={[styles.fadingContainer,
-                    {
-                      // Bind opacity to animated value
-                      opacity: fadeAnimm
-                    }
-                    ]}>
-            <Text style={styles.menu2}>Elige una actividad</Text>
+
+            <Animated.View style={[styles.fadingContainer, { opacity: fadeAnimm }]}>
+              <Text style={styles.menu2}>Elige una actividad</Text>
             </Animated.View>   
 
-            <Animated.View
-            style={[styles.fadingContainer,
-                    {
-                      // Bind opacity to animated value
-                      opacity: fadeAnim
-                    }
-                    ]}>
+            <Animated.View style={[styles.fadingContainer, { opacity: fadeAnim }]}>
               <CardT navigation={navigation} 
-                description={"Aplicacion para generar una lista de usuarios random por medio de un slideBar"}
+                description={"Modulo para hacer manejo de una lista de tareas pendientes"}
+                btnText = {"ToDo List"}
+                screen={"Todo"}
+                />
+            </Animated.View>
+
+            <Animated.View style={[styles.fadingContainer, { opacity: fadeAnim2 }]}>
+              <CardT navigation={navigation} 
+                description={"Modulo para generar una lista de usuarios random por medio de un slideBar"}
                 btnText = {"Usuarios random"}
                 screen={"Users"}
                 />
             </Animated.View>
 
-            <Animated.View
-            style={[styles.fadingContainer,
-                    {
-                      // Bind opacity to animated value
-                      opacity: fadeAnim2
-                    }
-                    ]}>
+            <Animated.View style={[styles.fadingContainer, { opacity: fadeAnim3 }]}>
               <CardT navigation={navigation} 
-            description={"Una caja que se hace grndota y se hace chiquita"}
-            btnText = {"Ir a la cajota"}
-            screen={"Box"}
+                description={"Modulo que permite modificar el tamaño de una caja en Anchura y Altura"}
+                btnText = {"Ir"}
+                screen={"Box"}
             />
             </Animated.View>
 
-            <Animated.View
-            style={[styles.fadingContainer,
-                    {
-                      // Bind opacity to animated value
-                      opacity: fadeAnim3
-                    }
-                    ]}>
+            <Animated.View style={[styles.fadingContainer, { opacity: fadeAnim4 }]}>
               <CardT navigation={navigation} 
-            description={"Aplicacion para Compartir una foro en tus redes sociales"}
-            btnText = {"Compartir Imagen"}
-            screen={"Share"}
-            />
+                description={"Modulo sacado de la documentacion de RN que permite compartir una imagen"}
+                btnText = {"Compartir Imagen"}
+                screen={"Share"}
+                />
             </Animated.View>
-
-            <Animated.View
+            {
+              /* 
+              <Animated.View
             style={[styles.fadingContainer,
                     {
                       // Bind opacity to animated value
@@ -162,6 +155,8 @@ const Home = ({navigation}) => {
             screen={"Moove"}
             />
             </Animated.View>
+              */
+            }
         </View>   
     </ScrollView>
   )

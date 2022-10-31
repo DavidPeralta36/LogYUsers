@@ -1,3 +1,5 @@
+//#region importaciones
+
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,15 +13,26 @@ import BigBox from './Animaciones/BigBox';
 import Eases from './Animaciones/Eases';
 import ExpandLayout from './Animaciones/ExpandLayaout';
 import MooveAnimation from './Animaciones/MooveAnimation';
-
+import Todo from './Todo/Todo';
+//#endregion
 
 
 const Stack = createNativeStackNavigator();
 
 const Cuerpo = () => {
-    const HomeScreen = ({ navigation }) => {
+      //#region pantallas principales
+
+      const HomeScreen = ({ navigation }) => {
         return (
           <Home navigation={navigation}/>
+        );
+      };
+      const TodoScreen = () => {
+        return (
+            <ScrollView>
+              <Todo/>
+            </ScrollView>
+            
         );
       };
       const UsersScreen = () => {
@@ -30,6 +43,13 @@ const Cuerpo = () => {
             
         );
       };
+      const BoxScreen = () => {
+        return (
+            <ScrollView>
+              <BigBox/>
+            </ScrollView>
+        );
+      };
       const ShareScreen = () => {
         return (
             <ScrollView>
@@ -37,6 +57,11 @@ const Cuerpo = () => {
             </ScrollView>
         );
       };
+
+      //#endregion
+
+      //#region animaciones varias
+      /*
       const DBoxScreen = () => {
         return (
             <ScrollView>
@@ -48,13 +73,6 @@ const Cuerpo = () => {
         return (
             <ScrollView>
               <CarruselAnimado/>
-            </ScrollView>
-        );
-      };
-      const BoxScreen = () => {
-        return (
-            <ScrollView>
-              <BigBox/>
             </ScrollView>
         );
       };
@@ -79,10 +97,13 @@ const Cuerpo = () => {
             </ScrollView>
         );
       };
-      
+      */
+      //#endregion
+
         return (
             <NavigationContainer >
                 <Stack.Navigator >
+                
                   <Stack.Screen name="Home" 
                                 component={HomeScreen} 
                                 options={{ title: '                Menu Principal', headerStyle: {
@@ -90,6 +111,13 @@ const Cuerpo = () => {
                                             headerTintColor: '#fff',
                                             headerTitleStyle: {
                                                 fontWeight: 'bold',},} }/>
+
+                  <Stack.Screen name="Todo" component={TodoScreen}
+                                options={{ title: 'Lista de Tareas', headerStyle: {
+                                            backgroundColor: '#34054F',},
+                                            headerTintColor: '#fff',
+                                            headerTitleStyle: {
+                                                fontWeight: 'bold',},} } />                              
                   <Stack.Screen name="Users" component={UsersScreen}
                                 options={{ title: 'Usuarios random', headerStyle: {
                                             backgroundColor: '#34054F',},
@@ -102,7 +130,15 @@ const Cuerpo = () => {
                                             headerTintColor: '#fff',
                                             headerTitleStyle: {
                                                 fontWeight: 'bold',},} } />
-                  <Stack.Screen name="DragBox" component={DBoxScreen}
+                  <Stack.Screen name="Box" component={BoxScreen}
+                                options={{ title: 'Una cajota', headerStyle: {
+                                            backgroundColor: '#710687',},
+                                            headerTintColor: '#fff',
+                                            headerTitleStyle: {
+                                                fontWeight: 'bold',},} } /> 
+                  {
+                    /*
+                    <Stack.Screen name="DragBox" component={DBoxScreen}
                                 options={{ title: 'Arrastra la cajita', headerStyle: {
                                             backgroundColor: '#710687',},
                                             headerTintColor: '#fff',
@@ -114,12 +150,7 @@ const Cuerpo = () => {
                                             headerTintColor: '#fff',
                                             headerTitleStyle: {
                                                 fontWeight: 'bold',},} } />
-                  <Stack.Screen name="Box" component={BoxScreen}
-                                options={{ title: 'Una cajota', headerStyle: {
-                                            backgroundColor: '#710687',},
-                                            headerTintColor: '#fff',
-                                            headerTitleStyle: {
-                                                fontWeight: 'bold',},} } />
+                  
                   <Stack.Screen name="Ease" component={EasesScreen}
                                 options={{ title: 'Animaciones varias', headerStyle: {
                                             backgroundColor: '#710687',},
@@ -137,7 +168,10 @@ const Cuerpo = () => {
                                             backgroundColor: '#710687',},
                                             headerTintColor: '#fff',
                                             headerTitleStyle: {
-                                                fontWeight: 'bold',},} } />                                            
+                                                fontWeight: 'bold',},} } />   
+                    */
+                  }                                                           
+                                                           
                 </Stack.Navigator>
             </NavigationContainer>
         );
