@@ -241,7 +241,7 @@ if(logear !== false){
         <Button title='Iniciar sesion :)' loading={iniciando?true:false} onPress={() => {
             setIniciando(true)
             fadeOut();
-          }} />
+          }} buttonStyle={{backgroundColor:'#624F82', width:230, height:50, borderRadius:10}}/>
           
       </Animated.View>
       
