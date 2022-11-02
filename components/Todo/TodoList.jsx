@@ -24,7 +24,7 @@ const TodoList = ({todoList, toggleTask}) => {
               </View>
             ))
           }
-        </View>
+    </View>
   )
 }
 

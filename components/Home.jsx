@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { Image, StyleSheet, Text, View,TextInput,TouchableOpacity,Alert,ScrollView, Animated  } from 'react-native';
+import { StyleSheet, Text, View,ScrollView, Animated  } from 'react-native';
 import CardT from './CardT';
 
 const Home = ({navigation}) => {
